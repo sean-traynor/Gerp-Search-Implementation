@@ -1,0 +1,57 @@
+COMP15 assignment04, Summer 2020
+README
+By: Sean Traynor
+
+    For this assignment, all of the code within IndexedDirectory.h,
+IndexedDirectory.cpp, and gerp.cpp is 100% my own, and none of it was copied or
+adapted from an external web based resource.
+Sean P. Traynor
+
+    My approach to completing this assignment was to create an object that
+could the entire indexed directory. I called this my IndexedDirectory Class,
+and this object holds the name of the directory, the number of files in the
+directory, all of the file paths in the directory, and all of the indexed
+files. This way, I could call private member functions to perform various
+operations on the data (i.e. the search function). My goal was to use no other
+sort of object and to hold all of the information I needed in strings and
+vectors/unordered_sets. The issue that I ran into, however, was: how do I
+maximize speed of indexing, while also maintaining a fast runtime of the
+queries? The way I accomplished this was by having two separate vectors to hold
+the information from the files: one holds the file lines, and one holds the
+file words. The way these interact is pretty straightforward, but implementing
+proved to be difficult. Because my files are read in the same order, and the
+lines in the file are also read in the same order, they have an index
+associated with the line/list of individual words. This way, I could perform
+search on the words vectors, which strip any non-alphanumeric characters while
+indexing, and access the line it is found on by passing in the index number and
+line number into the print function, which then uses those to access the line
+to print immediately. Also the word_line typedef is an unordered_set of strings
+that each hold all of the words found in a single line. This way, I could
+search in constant time, and the program didn't need to parse through each
+individual line to search for the word.
+
+    The other part that required a specific strategy to implement was the case
+insensitive search function. With this implementation, I tried to consider all
+of the cases where the words would be found, so I created three variations of
+the word: all lowercase, all uppercase, and the first letter uppercase and the
+rest lowercase (i.e. sean -> Sean). Though this isn't 100% accurate and could
+fall short, as it wouldn't work in extreme edge cases, but within the context
+of the data structure, it made the most sense.
+
+    The project took me somewhere around 15 hours to complete. The most time
+was spent planning and figuring out the implementation of the data structure.
+It was also difficult to figure out the other data types, such as the
+unordered_set, but I feel that I have a greater knowledge and understanding of
+data structures within a real-world context and how to plan structuring data
+when the constraints are very open and free. I tested very slowly with the
+index functions by creating a print function for each file. This way, I could
+make sure that it was reading in every word on every line in every file.
+Testing the search functions was straightforward, as I wrote the print function
+very early on, so I could see the output of the search function while I was
+writing it. I really enjoyed working on this project, and the free nature of
+the assignment really tested my knowledge of both data structures and C++
+syntax, which I really enjoyed. I think it was hard but fair, and my only
+feedback is maybe to have it be a little bit earlier assigned and due, as I
+felt super cramped with the quiz, final, and project. Overall, great class, and
+I learned a lot of super valuable information going forward.
+

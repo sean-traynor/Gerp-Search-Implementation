@@ -1,0 +1,4 @@
+tiny/test.txt:5: we are the champions
+tiny/test.txt:6: we we we
+tiny/a/found:1: I've loved COMP15
+Goodbye! Thank you and have a nice day.
